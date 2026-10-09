@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --theme-background: 9 9 11;
+  --theme-foreground: 250 250 250;
+  --theme-zinc-50: 250 250 250;
+  --theme-zinc-100: 244 244 245;
+  --theme-zinc-200: 228 228 231;
+  --theme-zinc-300: 212 212 216;
+  --theme-zinc-400: 161 161 170;
+  --theme-zinc-500: 113 113 122;
+  --theme-zinc-600: 82 82 91;
+  --theme-zinc-700: 63 63 70;
+  --theme-zinc-800: 39 39 42;
+  --theme-zinc-900: 24 24 27;
+  --theme-zinc-950: 9 9 11;
+  --theme-yellow-300: 253 224 71;
+  --theme-yellow-400: 250 204 21;
+  --theme-yellow-500: 234 179 8;
+  --theme-focus: 250 204 21;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  --theme-background: 250 250 250;
+  --theme-foreground: 24 24 27;
+  --theme-zinc-50: 9 9 11;
+  --theme-zinc-100: 24 24 27;
+  --theme-zinc-200: 39 39 42;
+  --theme-zinc-300: 63 63 70;
+  --theme-zinc-400: 82 82 91;
+  --theme-zinc-500: 113 113 122;
+  --theme-zinc-600: 82 82 91;
+  --theme-zinc-700: 63 63 70;
+  --theme-zinc-800: 212 212 216;
+  --theme-zinc-900: 244 244 245;
+  --theme-zinc-950: 250 250 250;
+  --theme-yellow-300: 133 77 14;
+  --theme-yellow-400: 133 77 14;
+  --theme-yellow-500: 234 179 8;
+  --theme-focus: 133 77 14;
+}
+
+[data-theme="high-contrast"] {
+  color-scheme: dark;
+  --theme-background: 0 0 0;
+  --theme-foreground: 255 255 255;
+  --theme-zinc-50: 255 255 255;
+  --theme-zinc-100: 255 255 255;
+  --theme-zinc-200: 255 255 255;
+  --theme-zinc-300: 255 255 255;
+  --theme-zinc-400: 255 255 255;
+  --theme-zinc-500: 238 238 238;
+  --theme-zinc-600: 238 238 238;
+  --theme-zinc-700: 255 255 255;
+  --theme-zinc-800: 64 64 64;
+  --theme-zinc-900: 24 24 24;
+  --theme-zinc-950: 0 0 0;
+  --theme-yellow-300: 255 255 0;
+  --theme-yellow-400: 255 255 0;
+  --theme-yellow-500: 255 255 0;
+  --theme-focus: 0 255 255;
+}
+
+@media (prefers-color-scheme: light) {
+  [data-theme="system"] {
+    color-scheme: light;
+    --theme-background: 250 250 250;
+    --theme-foreground: 24 24 27;
+    --theme-zinc-50: 9 9 11;
+    --theme-zinc-100: 24 24 27;
+    --theme-zinc-200: 39 39 42;
+    --theme-zinc-300: 63 63 70;
+    --theme-zinc-400: 82 82 91;
+    --theme-zinc-500: 113 113 122;
+    --theme-zinc-600: 82 82 91;
+    --theme-zinc-700: 63 63 70;
+    --theme-zinc-800: 212 212 216;
+    --theme-zinc-900: 244 244 245;
+    --theme-zinc-950: 250 250 250;
+    --theme-yellow-300: 133 77 14;
+    --theme-yellow-400: 133 77 14;
+    --theme-yellow-500: 234 179 8;
+    --theme-focus: 133 77 14;
+  }
+}
+
+@layer base {
+  html,
+  body {
+    background-color: rgb(var(--theme-background));
+    color: rgb(var(--theme-foreground));
+    transition: background-color 160ms ease, color 160ms ease;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid rgb(var(--theme-focus));
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300;
+  }
+  
+  .hover-glow:hover {
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+  }
+
+  .gradient-mask {
+    mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  }
+}
+
+[data-theme="high-contrast"] a {
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.15em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.movie-card-hover {
+  @apply transition-all duration-300;
+}
+
+.movie-card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px -8px rgba(255, 255, 255, 0.3);
+}
