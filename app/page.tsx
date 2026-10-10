@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import Link from "next/link";
 import MovieBrowser, { MovieSkeleton } from "../src/components/MovieBrowser";
 import { getMovieProvider } from "../src/lib/movies/providers";
 import { Movie } from "../src/lib/movies/types";
@@ -28,7 +29,7 @@ async function TrendingMovies() {
       <main className="mx-auto max-w-7xl px-5 py-10 sm:px-8">
         <div className="mb-6 flex items-end justify-between gap-4">
           <div><p className="text-sm font-medium text-yellow-400">Updated from the movie catalog</p><h2 className="mt-1 text-2xl font-bold">Trending this week</h2></div>
-          <a href="/movies?sort=trending" className="text-sm font-semibold text-yellow-400 hover:text-yellow-300">Browse movies</a>
+          <Link href="/movies?sort=trending" className="text-sm font-semibold text-yellow-400 hover:text-yellow-300">Browse movies</Link>
         </div>
         <MovieBrowser category="trending" initialPage={initialPage} />
       </main>
