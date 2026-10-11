@@ -1,12 +1,6 @@
 import type { Metadata } from "next";
 import ActorProfileView, { getActorMetadata } from "../../../src/components/actors/ActorProfileView";
 
-export const revalidate = 3600;
-
-export function generateStaticParams() {
-  return [];
-}
-
 type ActorPageProps = {
   params: Promise<{ id: string }>;
 };
